@@ -1,15 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
 from PyPDF2 import PdfReader
+from dataManipulation import removeStopWords, stemmingWords
 
 class ProcessedEmail:
     personName: str
     relevant: bool
     email: str
 
-def iaProcess(email: str, personName: str) -> str:
+def ProcessMensage(email: str, personName: str) -> str:
     #TODO make the ia process to classifier the email
-
+    emailProsseced = removeStopWords(email)
+    emailProsseced = stemmingWords(emailProsseced)
     return "Classificado"
 
 def renderHomePage(request: HttpRequest):
@@ -28,7 +30,6 @@ def receiveEmail(request: HttpRequest) -> HttpResponse:
             text = txt_file.read().decode('utf-8')
 
         elif 'email' in request.POST:
-            # Exemplo de coleta dos dados de texto simples
             nome = request.POST.get('nome')
             email = request.POST.get('email')
             text = f"Nome: {nome}\nEmail: {email}"
