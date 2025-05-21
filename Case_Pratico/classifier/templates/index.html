@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<div>
+        <p>Inserir o email por cópia</p>
+        <form method="POST" action="{% url 'receive_email' %}">
+            {% csrf_token %}
+            <input type="text" name="nome" placeholder="Insira o nome do cliente">
+            <input type="text" name="email" placeholder="Insira seu email">
+            <button type="submit">Process Email</button>
+        </form>
+    </div>
+
+    <div>
+        <p>Inserir o email por um .pdf</p>
+        <form method="POST" enctype="multipart/form-data" action="{% url 'receive_email' %}">
+            {% csrf_token %}
+            <input type="file" name="pdf_file" accept=".pdf">
+            <button type="submit">Processar PDF</button>
+        </form>
+    </div>
+
+    <div>
+        <p>Inserir o email por .txt</p>
+        <form method="POST" enctype="multipart/form-data" action="{% url 'receive_email' %}">
+            {% csrf_token %}
+            <input type="file" name="txt_file" accept=".txt">
+            <button type="submit">Processar TXT</button>
+        </form>
+    </div>
+    {% if text %}
+    <div>
+        <h3>Texto extraído/processado:</h3>
+        <pre>{{ text }}</pre>
+    </div>
+    {% endif %}
+</html>
