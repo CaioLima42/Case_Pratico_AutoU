@@ -1,2 +1,2 @@
-from removeStopWords import removeStopWords
-from stemmingWords import stemmingWords
+from .removeStopWords import removeStopWords
+from .stemmingWords import stemmingWords
