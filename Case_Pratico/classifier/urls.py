@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.renderHomePage, name='home'),
-    path('email/enviar/', views.receiveEmail, name='receive_email'),
+    path('enviar/', views.receiveEmail, name='receive_email'),
 ]
