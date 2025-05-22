@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Response</title>
+</head>
+<body>
+    {% include "header.html" %}
+    {%if text%}
+        <div>O email enviado é Produtivo</div>
+        <div>Mensagem Resposta sujerida: </div>
+        <pre>{{dirt}}</pre>
+    {%else%}
+        <div>O email enviado não é Improdutivo</div>
+    {% endif %}
+</body>
+</html>
