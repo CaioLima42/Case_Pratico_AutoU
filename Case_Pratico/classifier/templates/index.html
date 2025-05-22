@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
 </head>
-<div>
+<body>
+{% include "header.html" %}
+    <div>
         <p>Inserir o email por cópia</p>
         <form method="POST" action="{% url 'receive_email' %}">
             {% csrf_token %}
@@ -19,6 +21,7 @@
         <p>Inserir o email por um .pdf</p>
         <form method="POST" enctype="multipart/form-data" action="{% url 'receive_email' %}">
             {% csrf_token %}
+            <input type="text" name="nome" placeholder="Insira o nome do cliente">
             <input type="file" name="pdf_file" accept=".pdf">
             <button type="submit">Processar PDF</button>
         </form>
@@ -28,6 +31,7 @@
         <p>Inserir o email por .txt</p>
         <form method="POST" enctype="multipart/form-data" action="{% url 'receive_email' %}">
             {% csrf_token %}
+            <input type="text" name="nome" placeholder="Insira o nome do cliente">
             <input type="file" name="txt_file" accept=".txt">
             <button type="submit">Processar TXT</button>
         </form>
@@ -38,4 +42,5 @@
         <pre>{{ text }}</pre>
     </div>
     {% endif %}
+</body>
 </html>
