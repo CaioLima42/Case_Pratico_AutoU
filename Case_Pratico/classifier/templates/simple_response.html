@@ -1,18 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Response</title>
+    <title>Resposta</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/simpleResponse.css' %}">
+    <link rel="stylesheet" href="{% static 'css/load-overlay.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     {% include "header.html" %}
-    {%if text%}
-        <div>O email enviado é Produtivo</div>
-        <div>Mensagem Resposta sujerida: </div>
-        <pre>{{dirt}}</pre>
-    {%else%}
-        <div>O email enviado não é Improdutivo</div>
-    {% endif %}
+
+    <div class="response-container">
+        {% if email_id %}
+            <div class="status success">
+                ✅ O email enviado por {{ sendBy }} é <strong>Produtivo</strong>.
+            </div>
+            <div class="message-title">
+                💬 Mensagem sugerida:
+            </div>
+            <pre class="suggested-message">{{ dirt | safe}}</pre>
+            <a id="sendEmailBtn" href="{% url 'send_email' %}?dirt={{ dirt|urlencode }}&sendBy={{ sendBy }}" class="btn">📤 Enviar mensagem</a>
+            <a href="{% url 'home_page' %}" class="btn">🏠 Voltar à Página Inicial</a>
+            <a href="{% url 'edit_email' email_id%}" class="btn">✏️ Editar Resposta</a>
+        {% else %}
+            <div class="status fail">
+                ⚠️ O email enviado é <strong>Improdutivo</strong>.
+            </div>
+        {% endif %}
+        <div id="loadingOverlay" class="loading-overlay">
+            {% include "loading.html" %}
+        </div>
+        {% load static %}
+        <script src = "{% static 'js/loadA.js'%}"></script>
+
+    </div>
 </body>
 </html>
