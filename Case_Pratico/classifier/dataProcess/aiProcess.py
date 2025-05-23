@@ -1,9 +1,10 @@
-import os
-from dotenv import load_dotenv
-from pathlib import Path
 from google import genai
 from google.genai.types import HttpOptions, GenerateContentResponse
 import re
+from .utils import getEnterpriseName
+import os
+from dotenv import load_dotenv
+from pathlib import Path
 
 def getApiKey():
     env_path = Path(__file__).resolve().parent.parent.parent.parent / '.envs'
@@ -11,11 +12,6 @@ def getApiKey():
     api_key = os.getenv("API_KEY")
     return api_key
 
-def getEnterpriseName():
-    env_path = Path(__file__).resolve().parent.parent.parent.parent / '.envs'
-    load_dotenv(dotenv_path=env_path / '.env')
-    api_key = os.getenv("NOME_DA_EMPRESA")
-    return api_key
 
 ENTERPRICE_NAME = getEnterpriseName()
 APIKEY = getApiKey()
