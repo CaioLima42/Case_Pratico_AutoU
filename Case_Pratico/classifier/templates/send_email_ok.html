@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status do Envio</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/sendEmailOk.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+<body>
+    {% include "header.html" %}
+    <div class="status-container">
+        {% if sendE %}
+            <div class="icon">✅</div>
+            <div class="success">Email enviado com sucesso!</div>
+        {% else %}
+            <div class="icon">❌</div>
+            <div class="fail">Falha ao enviar o email.</div>
+        {% endif %}
+        <a href="{% url 'home_page' %}" class="btn">🏠 Voltar à Página Inicial</a>
+    </div>
+</body>
+</html>
