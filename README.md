@@ -55,11 +55,11 @@ python manage.py runserver
 # Uso do DJANGO:
 Foi escolhido por sua capacidade de integrar de forma simples o backend com o frontend, além de fornecer um robusto suporte a ORM (Object-Relational Mapping). A familiaridade com o framework também contribuiu para esta escolha.
 
-### Uso do Gemini como Ai de processamento:
+# Uso do Gemini como Ai de processamento:
 Selecionado por ser uma IA eficiente e por oferecer prompts ilimitados de forma gratuita, ideal para a classificação de e-mails e sugestão de respostas.
 
-### Uso do smtplib para fazer o envido de emails
+# Uso do smtplib para fazer o envido de emails
 Essa biblioteca foi selecionada pelo fato de não precisar ter nenhum aplicativo de email baixado localmente, em contra partida, ela não consegue fazer a comunicação a partir de emails gerenciados pelo outlook
 
-### Uso do nltk para fazer o processamento das mensagens:
+# Uso do nltk para fazer o processamento das mensagens:
 Esta é uma biblioteca eficiente para o pré-processamento de mensagens. Nesta aplicação, ela foi utilizada para remover *stop words* e aplicar *stemming*
