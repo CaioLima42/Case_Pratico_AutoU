@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir Emails</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/getEmail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/load-overlay.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+<body>
+    {% include "header.html" %}
+    <div class="content">
+        <h1>Inserção de Emails</h1>
+
+        <div class="form-section">
+            <h2>Inserir por cópia</h2>
+            <form method="POST" action="{% url 'check_email'%}">
+                {% csrf_token %}
+                <input type="email" name="email" placeholder="Endereço de email do cliente" required>
+                <input type="text" name="content" placeholder="Email" required>
+                <button type="submit">Processar Email</button>
+            </form>
+        </div>
+
+        <div class="form-section">
+            <h2>Inserir por PDF</h2>
+            <form method="POST" enctype="multipart/form-data" action="{% url 'check_email'%}">
+                {% csrf_token %}
+                <input type="text" name="email" placeholder="Endereço de email do cliente" required>
+                <input type="file" name="pdf_file" accept=".pdf" required>
+                <button type="submit">Processar PDF</button>
+            </form>
+        </div>
+
+        <div class="form-section">
+            <h2>Inserir por TXT</h2>
+            <form method="POST" enctype="multipart/form-data" action="{% url 'check_email'%}">
+                {% csrf_token %}
+                <input type="text" name="email" placeholder="Endereço de email do cliente" required>
+                <input type="file" name="txt_file" accept=".txt" required>
+                <button type="submit">Processar TXT</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        {% include "loading.html" %}
+    </div>
+    {% load static %}
+    <script src = "{% static 'js/loadButton.js' %}"></script>
+</body>
+</html>
