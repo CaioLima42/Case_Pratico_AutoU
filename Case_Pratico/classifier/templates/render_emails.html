@@ -1,11 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ver Emails</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/seeEmails.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <p>Esta pagina tem o intuito de renderizar todos os emails!!!!</p>
+    {% include "header.html" %}
+
+    <div class="container">
+        <h1>📬 Emails Recebidos e Processados</h1>
+
+        {% if emails %}
+            {% for email in emails %}
+                <div class="email-card">
+                    <h2>📌 Cliente: <span>{{ email.clientEmail }}</span></h2>
+
+                    <p><strong>📝 Mensagem do Email:</strong></p>
+                    <div class="email-content">{{ email.emailMesage|linebreaksbr}}</div>
+
+                    <p><strong>📊 É Relevante?</strong> 
+                        <span class="{% if email.relevence %}relevant{% else %}not-relevant{% endif %}">
+                            {% if email.relevence %}Sim{% else %}Não{% endif %}
+                        </span>
+                    </p>
+                    {% if email.response %}
+                    <p><strong>💡 Resposta Gerada:</strong></p>
+                    <div class="email-response">{{ email.response | safe }}</div>
+                    {% endif %}
+                    <form method="POST" action="{% url 'delete_email' email.id %}" onsubmit="return confirm('Tem certeza que deseja deletar este email?');">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-btn">🗑️ Deletar</button>
+                    </form>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-emails">⚠️ Nenhum email foi salvo ainda.</p>
+        {% endif %}
+    </div>
 </body>
 </html>
