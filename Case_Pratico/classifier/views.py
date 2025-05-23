@@ -113,14 +113,4 @@ def deleteEmail(request: HttpRequest, email_id) -> HttpResponse:
 
 def editEmail(request: HttpRequest, email_id) -> HttpResponse:
     email_obj = get_object_or_404(CheckedEmail, id=email_id)
-
-    # if request.method == 'POST':
-    #     email_id = request.POST.get('email_id')
-    #     email = request.POST.get('email')
-    #     save = request.POST.get('save')
-    #     nova_resposta = request.POST.get('nova_resposta')
-    #     email_obj.response = nova_resposta
-    #     email_obj.save()
-    #     return render(request, 'simple_response.html', {'email_id':email_id, 'email': email, 'save': True}) 
-
     return render(request, 'edit_email.html', {'email': email_obj})
