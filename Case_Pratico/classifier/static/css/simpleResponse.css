@@ -1,0 +1,75 @@
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #1a1a1a;
+}
+
+.response-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.status {
+    padding: 18px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.success {
+    background-color: #e6f4ff;
+    color: #0056b3;
+    border-left: 6px solid #0056b3;
+}
+
+.fail {
+    background-color: #ffecec;
+    color: #b30000;
+    border-left: 6px solid #b30000;
+}
+
+.message-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #003f80;
+}
+
+.suggested-message {
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    padding: 16px;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.btn:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 600px) {
+    .status, .message-title, .suggested-message {
+        font-size: 15px;
+    }
+
+    .response-container {
+        padding: 0 12px;
+    }
+}
+

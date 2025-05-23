@@ -1,0 +1,44 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f7fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+.status-container {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 500px;
+}
+.success {
+    color: #2e7d32;
+    font-weight: 600;
+    font-size: 20px;
+}
+.fail {
+    color: #c62828;
+    font-weight: 600;
+    font-size: 20px;
+}
+.icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background-color: #0056b3;
+}
