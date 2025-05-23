@@ -16,8 +16,10 @@
                 <input type="hidden" name="email_id" value="{{ email.id }}">
                 <input type="hidden" name="email" value="{{ email.clientName }}">
                 <input type="hidden" name="save" value="{{'False'}}">
-                <button type="submit" class="btn">💾 Salvar</button>
-                <a href="{% url 'read_email' %}" class="btn">↩ Voltar</a>
+                <div>
+                    <button type="submit" class="btn">💾 Salvar</button>
+                    <a href="{% url 'read_email' %}" class="btn">↩ Voltar</a>
+                </div>
             </form>
     </div>
 </body>
