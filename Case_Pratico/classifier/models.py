@@ -3,7 +3,7 @@ from django.db import models
 from django.db import models
 
 class CheckedEmail(models.Model):
-    clientName = models.CharField(max_length=100, verbose_name="User Name")
+    clientEmail = models.CharField(max_length=100, verbose_name="User Name")
     emailMesage = models.TextField(verbose_name="Email Mensage")
     relevence = models.BooleanField(default=False, verbose_name="Its Relevant?")
     response = models.TextField(verbose_name="Respose for email")
@@ -11,7 +11,7 @@ class CheckedEmail(models.Model):
     class Meta:
         verbose_name = "CheckedEmail"
         verbose_name_plural = "CheckedEmail"
-        ordering = ['-clientName']
+        ordering = ['-clientEmail']
 
     def __str__(self):
-        return f"The email of {self.nome_usuario} ({'Is relevant' if self.relevancia else 'is not relevant'})"
+        return f"The email of {self.clientEmail} whith contenct {self.relevence} ({'Is relevant' if self.relevence else 'is not relevant'})"
