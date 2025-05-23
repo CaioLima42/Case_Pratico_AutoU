@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Resposta</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/simpleResponse.css' %}">
+</head>
+<body>
+    {% include "header.html" %}
+    <div class="response-container">
+        <h1>Editar Resposta para {{ email.clientName }}</h1>
+            <form method="POST" action="{% url 'check_email'%}">
+                {% csrf_token %}
+                <textarea name="new_response" rows="10" cols="80">{{ email.response }}</textarea>
+                <input type="hidden" name="email_id" value="{{ email.id }}">
+                <input type="hidden" name="email" value="{{ email.clientName }}">
+                <input type="hidden" name="save" value="{{'False'}}">
+                <button type="submit" class="btn">💾 Salvar</button>
+                <a href="{% url 'read_email' %}" class="btn">↩ Voltar</a>
+            </form>
+    </div>
+</body>
+</html>
