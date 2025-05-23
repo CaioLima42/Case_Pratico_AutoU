@@ -3,44 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Home | AutoU</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css'%}">
 </head>
 <body>
-{% include "header.html" %}
-    <div>
-        <p>Inserir o email por cópia</p>
-        <form method="POST" action="{% url 'receive_email' %}">
-            {% csrf_token %}
-            <input type="text" name="nome" placeholder="Insira o nome do cliente">
-            <input type="text" name="email" placeholder="Insira seu email">
-            <button type="submit">Process Email</button>
-        </form>
-    </div>
+    {% include "header.html" %}
 
-    <div>
-        <p>Inserir o email por um .pdf</p>
-        <form method="POST" enctype="multipart/form-data" action="{% url 'receive_email' %}">
-            {% csrf_token %}
-            <input type="text" name="nome" placeholder="Insira o nome do cliente">
-            <input type="file" name="pdf_file" accept=".pdf">
-            <button type="submit">Processar PDF</button>
-        </form>
-    </div>
+    <div class="content">
+        <h1>Bem-vindo à AutoU</h1>
+        <p class = "paragraph">
+            Este é o painel principal do projeto para a AutoU. Aqui você poderá validar emails, visualizar os resultados
+            e navegar por outras funcionalidades do sistema. Use os botões acima para acessar cada seção.
+        </p>
 
-    <div>
-        <p>Inserir o email por .txt</p>
-        <form method="POST" enctype="multipart/form-data" action="{% url 'receive_email' %}">
-            {% csrf_token %}
-            <input type="text" name="nome" placeholder="Insira o nome do cliente">
-            <input type="file" name="txt_file" accept=".txt">
-            <button type="submit">Processar TXT</button>
-        </form>
+        <div class="info-section">
+            <div class="card">
+                <h2>Validação de Emails</h2>
+                <p class = "paragraph">Verifique se os emails são válidos automaticamente e com precisão. Ideal para campanhas e listas.</p>
+            </div>
+
+            <div class="card">
+                <h2>Visualização</h2>
+                <p class = "paragraph">Acesse os resultados das validações de forma rápida e organizada com histórico completo.</p>
+            </div>
+
+        </div>
     </div>
-    {% if text %}
-    <div>
-        <h3>Texto extraído/processado:</h3>
-        <pre>{{ text }}</pre>
-    </div>
-    {% endif %}
 </body>
 </html>
