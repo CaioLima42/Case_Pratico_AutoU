@@ -95,10 +95,6 @@ def renderAllEmails(request: HttpRequest) -> HttpResponse:
     }
     return render(request, 'render_emails.html', context)
 
-def dropDataset(request: HttpRequest)-> HttpResponse:
-    CheckedEmail.objects.all().delete()
-    return redirect('home_page')
-
 def sendEmail(request: HttpRequest)-> HttpResponse:
     dirt = request.GET.get('dirt')
     sendBy = request.GET.get('sendBy')
