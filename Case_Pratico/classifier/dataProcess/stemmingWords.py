@@ -10,7 +10,6 @@ def stemmingWords(msg: str):
 
     words = word_tokenize(msg)
 
-    # using reduce to apply stemmer to each word and join them back into a string
     stemmed_sentence = reduce(lambda x, y: x + " " + ps.stem(y), words, "")
 
     return stemmed_sentence
