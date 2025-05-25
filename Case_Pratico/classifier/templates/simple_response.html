@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resposta</title>
     {% load static %}
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/simpleResponse.css' %}">
     <link rel="stylesheet" href="{% static 'css/load-overlay.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -13,7 +14,7 @@
     {% include "header.html" %}
 
     <div class="response-container">
-        {% if email_id %}
+        {% if email_id and text%}
             <div class="status success">
                 ✅ O email enviado por {{ sendBy }} é <strong>Produtivo</strong>.
             </div>
